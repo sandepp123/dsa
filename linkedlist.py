@@ -1,5 +1,5 @@
 class Node:
-    def __init__(self,value):
+    def __init__(self,value=None):
         self.value = value
         self.next = None
 
@@ -155,17 +155,35 @@ class LinkedList:
             count+=1
             leader=leader.next
         return follower
-
-# new_linked_list = LinkedList()
-# new_linked_list.append(10)
+    def removeNthFromEnd(self,  n: int): #head: Optional[ListNode],
+        leader = follower = self.head
+        count = 0
+        previous = Node(0)
+        while leader:
+            if count>=n:
+                previous = follower
+                follower = follower.next
+            count+=1
+            leader = leader.next
+        previous.next = follower.next
+        print(follower.value,follower.next)
+        # follower.next = None
+        print(follower.value,follower.next)
+        if follower.next is None:
+            print("here")
+            
+            return Node().value    
+        return self.head
+new_linked_list = LinkedList()
+new_linked_list.append(10)
 # new_linked_list.append(20)
 # new_linked_list.append(30)
 # new_linked_list.append(40)
 # new_linked_list.append(50)
-# print(new_linked_list.__str__())
+print(new_linked_list.__str__())
 
-# print(new_linked_list.k_to_last(5).value)
-
+new_linked_list.removeNthFromEnd(1)
+print(new_linked_list.__str__())
 # cracking interview testing
 
 # new_linked_list = LinkedList()
