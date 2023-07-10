@@ -159,6 +159,8 @@ class LinkedList:
         leader = follower = self.head
         count = 0
         previous = Node(0)
+        if head.next is None:
+            return None
         while leader:
             if count>=n:
                 previous = follower
@@ -166,13 +168,11 @@ class LinkedList:
             count+=1
             leader = leader.next
         previous.next = follower.next
-        print(follower.value,follower.next)
-        # follower.next = None
-        print(follower.value,follower.next)
-        if follower.next is None:
-            print("here")
-            
-            return Node().value    
+
+        if leader is None and follower==self.head:
+            self.head = self.head.next
+            return self.head
+
         return self.head
 new_linked_list = LinkedList()
 new_linked_list.append(10)
