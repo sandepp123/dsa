@@ -41,8 +41,20 @@ class BinaryTree:
         self.postOrderTraversel(index*2)
         self.postOrderTraversel(index*2+1)
         print(self.customList[index])
+    
+    def levelOrderTraversal(self,index):
+        for i in range(index,self.lastusedIndex+1):
+            print(self.customList[i])
+    
+    def delete(self,index,value):
+        if self.lastusedIndex ==0:
+            return
         
-
+        for i in range(index,self.lastusedIndex+1):
+            if self.customList[i] == value:
+                self.customList[i]  = self.customList[self.lastusedIndex]
+                self.lastusedIndex-=1
+        return "Succesfully deleted"
 new_BT = BinaryTree(8)
 print(new_BT.insertNode("Drinks"))
 print(new_BT.insertNode("Hot"))
@@ -50,4 +62,5 @@ print(new_BT.insertNode("Cold"))
 print(new_BT.insertNode("Tea"))
 print(new_BT.insertNode("Coffee"))
 # print(new_BT.search("Coldw"))
-new_BT.postOrderTraversel(1)
+new_BT.delete(1,"Coffee")
+new_BT.levelOrderTraversal(1)
